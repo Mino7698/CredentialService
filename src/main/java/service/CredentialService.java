@@ -9,9 +9,18 @@ import java.util.*;
 
 public class CredentialService {
 
-    public Map<String,List<List<Object>>> returnDifferenceOfCredentialsMap (String path1, String path2) throws IOException {
+    public Map<String, List<List<Object>>> returnDifferenceOfCredentialsMap(String path1, String path2) throws IOException {
         Map<String, List<Object>> map1 = ReadJson.readJsonLikeAMap(path1);
         Map<String, List<Object>> map2 = ReadJson.readJsonLikeAMap(path2);
+        Map<String, List<Object>> sumMap = new HashMap<>(map1);
+        map2.entrySet().stream().forEach(entry -> {
+            sumMap.put(entry.getKey(), entry.getValue());
+        });
+        Set intersectionSet = new HashSet(map1.keySet());
+        intersectionSet.retainAll(map2.keySet());
+        Set resultSet = sumMap.keySet();
+        resultSet.removeAll(intersectionSet);
+
         MapDifference mapDifference = Maps.difference(map1,map2);
         Map midResult = mapDifference.entriesDiffering();
         Map result = new HashMap();
@@ -23,11 +32,19 @@ public class CredentialService {
             differenceList.removeAll(intersection);
             result.put(key,differenceList);
         }
+        for (Object key : resultSet) {
+            if (map1.containsKey(key)) {
+                result.put(key, map1.get(key));
+            } else {
+                result.put(key, map2.get(key));
+            }
+        }
+
         return result;
     }
 
 
-    public int returnNumberOfDifferenceOfCredentialsMap (String path1, String path2) throws IOException {
+    public int returnNumberOfDifferenceOfCredentialsMap(String path1, String path2) throws IOException {
         return returnDifferenceOfCredentialsMap(path1, path2).values()
                 .stream().mapToInt(List::size).sum();
     }

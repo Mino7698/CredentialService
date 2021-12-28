@@ -32,7 +32,7 @@ public class CredentialServiceTest {
 
     @Test
     public void ServiceTestReturnNumberOfDifferenceOfCredentialsMap() throws IOException {
-        Assert.assertEquals(5, service.returnNumberOfDifferenceOfCredentialsMap(path1, path2));
+        Assert.assertEquals(4, service.returnNumberOfDifferenceOfCredentialsMap(path1, path2));
     }
 
 }
