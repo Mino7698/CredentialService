@@ -26,4 +26,16 @@ public class CredentialService {
         return result;
     }
 
+
+    public int returnNumberOfDifferenceOfCredentialsMap (String path1, String path2) throws IOException {
+        Map map = returnDifferenceOfCredentialsMap(path1,path2);
+        Set keys = map.keySet();
+        List<Object> differenceList = new ArrayList<>();
+        for (Object key : keys) {
+            differenceList.addAll((Collection<?>)map.get(key));
+        }
+
+        return differenceList.size();
+    }
+
 }
