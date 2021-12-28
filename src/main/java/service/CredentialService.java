@@ -2,7 +2,6 @@ package service;
 
 import com.google.common.collect.MapDifference;
 import com.google.common.collect.Maps;
-import model.ProfCredentials;
 import util.ReadJson;
 
 import java.io.IOException;
@@ -25,16 +24,6 @@ public class CredentialService {
             result.put(key,differenceList);
         }
         return result;
-    }
-
-    public int returnNumberOfDifferenceOfCredentialsMap (String path1, String path2) throws IOException {
-        Map map = returnDifferenceOfCredentialsMap(path1,path2);
-        Set keys = map.keySet();
-        List<Object> differenceList = new ArrayList<>();
-        for (Object key : keys) {
-            differenceList.addAll((Collection<?>) map.get(key));
-        }
-        return differenceList.size();
     }
 
 }
