@@ -1,0 +1,28 @@
+{"profession": "dvornik",
+  "credentials": [
+    {
+      "groupName": "java",
+      "rights": "write"
+    },
+    {
+      "groupName": "skype",
+      "rights": "call"
+    },
+    {
+      "groupName": "office",
+      "rights": "excel"
+    },
+    {
+      "groupName": "telegram",
+      "rights": "commonUser"
+    },
+    {
+      "groupName": "chrome",
+      "rights": "search"
+    },
+    {
+      "groupName": "youtube",
+      "rights": "watch"
+    }
+  ]
+}

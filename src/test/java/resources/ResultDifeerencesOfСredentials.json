@@ -1,0 +1,16 @@
+{"profession": "dvornik",
+  "credentials": [
+    {
+      "groupName": "skype",
+      "rights": "inner call"
+    },
+    {
+      "groupName": "office",
+      "rights": "word"
+    },
+    {
+      "groupName": "telegram",
+      "rights": "godmod"
+    }
+  ]
+}
