@@ -2,6 +2,7 @@ package service;
 
 import com.google.common.collect.MapDifference;
 import com.google.common.collect.Maps;
+import com.google.common.collect.Sets;
 import util.ReadJson;
 
 import java.io.IOException;
@@ -16,10 +17,7 @@ public class CredentialService {
         map2.entrySet().stream().forEach(entry -> {
             sumMap.put(entry.getKey(), entry.getValue());
         });
-        Set intersectionSet = new HashSet(map1.keySet());
-        intersectionSet.retainAll(map2.keySet());
-        Set resultSet = sumMap.keySet();
-        resultSet.removeAll(intersectionSet);
+        Set resultSet = Sets.symmetricDifference(map1.keySet(), map2.keySet());
 
         MapDifference mapDifference = Maps.difference(map1,map2);
         Map midResult = mapDifference.entriesDiffering();
